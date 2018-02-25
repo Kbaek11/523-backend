@@ -1,4 +1,2 @@
 gunicorn
 flask
-render_template
-request
