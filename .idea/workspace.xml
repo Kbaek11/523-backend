@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="098b0630-9d40-447c-9731-c9b7e9e6b9a7" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/initial/index.html" afterPath="$PROJECT_DIR$/initial/index.html" />
-      <change beforePath="$PROJECT_DIR$/templates/hello.html" afterPath="$PROJECT_DIR$/templates/hello.html" />
-    </list>
+    <list default="true" id="098b0630-9d40-447c-9731-c9b7e9e6b9a7" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,8 +65,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="600" />
-    <option name="y" value="488" />
+    <option name="x" value="-330" />
+    <option name="y" value="303" />
     <option name="width" value="1400" />
     <option name="height" value="791" />
   </component>
@@ -145,7 +142,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="600" y="488" width="1400" height="791" extended-state="0" />
+    <frame x="-330" y="303" width="1400" height="791" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
