@@ -5,7 +5,7 @@ application = Flask(__name__)
 def hello():
     return render_template('hello.html')
 
-@application.route('/result',methods = ['POST', 'GET'])
+@application.route('http://drug-education-project-kbaek11.cloudapps.unc.edu/result',methods = ['POST', 'GET'])
 def result():
    if request.method == 'POST':
       result = request.form
