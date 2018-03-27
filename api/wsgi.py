@@ -1,24 +1,11 @@
-<<<<<<< HEAD
-from flask import Flask, render_template, request
-from flask_sqlalchemy import SQLAlchemy
-import psycopg2
-
-application = Flask(__name__)
-application.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:522314@localhost/postgres'
-db = SQLAlchemy(application)
-
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-=======
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import psycopg2
->>>>>>> fe7f8a9926a842a4d270ab86ee9a8aeb0b2e1965
 
 application = Flask(__name__)
 #specify user, pass, host, db name
-application.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhost/test'
+application.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhost/AthleteData'
 db = SQLAlchemy(application) 
 migrate = Migrate(application, db)
 
@@ -28,7 +15,7 @@ class Student(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     team = db.Column(db.String(80), unique=False)
 
-class Data(db.Model):
+class StudentData(db.Model):
     __tablename__ = 'data'
     id = db.Column(db.Integer, primary_key=True)
     studentId = db.Column(db.Integer, db.ForeignKey('students.id'))
