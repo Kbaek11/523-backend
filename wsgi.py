@@ -12,17 +12,31 @@ class User(db.Model):
 =======
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 import psycopg2
 >>>>>>> fe7f8a9926a842a4d270ab86ee9a8aeb0b2e1965
 
 application = Flask(__name__)
-application.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:doberman@localhost/postgres'
-db = SQLAlchemy(application)
+#specify user, pass, host, db name
+application.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhost/test'
+db = SQLAlchemy(application) 
+migrate = Migrate(application, db)
 
-class User(db.Model):
+#Create tables
+class Student(db.Model):
+    __tablename__ = 'students'
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True)
-    email = db.Column(db.String(120), unique=True)
+    team = db.Column(db.String(80), unique=False)
+
+class Data(db.Model):
+    __tablename__ = 'data'
+    id = db.Column(db.Integer, primary_key=True)
+    studentId = db.Column(db.Integer, db.ForeignKey('students.id'))
+    q1 = db.Column(db.Integer)
+    q2 = db.Column(db.Integer)
+    q3 = db.Column(db.Integer)
+    q4 = db.Column(db.Integer)
+    q5 = db.Column(db.Integer)
 
 @application.route('/')
 def index():
@@ -31,6 +45,9 @@ def index():
 
 if __name__ == "__main__":
     application.run(debug = True)
+    db.create_all()
+
+
 
 # @application.route('/hello.html')
 # def hello():
