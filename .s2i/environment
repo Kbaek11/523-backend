@@ -1,4 +1,4 @@
 APP_CONFIG=config.py
-APP_FILE=~/api/wsgi.py
+APP_FILE=wsgi.py
 UPGRADE_PIP_TO_LATEST=1
 
