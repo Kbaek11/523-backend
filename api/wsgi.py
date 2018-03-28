@@ -25,6 +25,7 @@ class StudentData(db.Model):
     q4 = db.Column(db.Integer)
     q5 = db.Column(db.Integer)
 
+#Create routes
 @application.route('/')
 def index():
     #return render_template('index.html')
