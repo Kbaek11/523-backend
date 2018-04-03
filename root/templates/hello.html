@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/style.css') }}" />
+
+      <title>Drug Education Project</title>
+
+      <!-- React JS -->
+      <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
+      <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
+      <script src="https://unpkg.com/babel-core@5.8.38/browser.min.js"></script>
+      <script type="text/babel" src="{{ url_for('static', filename='js/form.js') }}"></script>
+    </head>
+    <body>
+      <div class="container">
+        <div id="form_container">
+
+        </div>
+      </div>
+
+
+      <!-- <div class="web-form">
+        <form method="POST" action="/result">
+            <p>Please choose which team you play for:</p>
+            <p>Athletic Team: <select name="Team">
+              <option value="basketball">Basketball</option>
+              <option value="baseball">Baseball</option>
+              <option value="football">Football</option>
+              <option value="volleyball">Volleyball</option>
+            </select>
+            </p>
+            <p><input type="submit" value="Submit" /></p>
+        </form>
+      </div> -->
+
+    </body>
+  </html>
