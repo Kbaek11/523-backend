@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 026040f0db60
+Revision ID: d09fbcfd73b8
 Revises: 
-Create Date: 2018-03-27 15:50:54.399269
+Create Date: 2018-04-03 14:29:04.408059
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '026040f0db60'
+revision = 'd09fbcfd73b8'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -26,11 +26,20 @@ def upgrade():
     op.create_table('data',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('studentId', sa.Integer(), nullable=True),
-    sa.Column('q1', sa.Integer(), nullable=True),
-    sa.Column('q2', sa.Integer(), nullable=True),
-    sa.Column('q3', sa.Integer(), nullable=True),
-    sa.Column('q4', sa.Integer(), nullable=True),
-    sa.Column('q5', sa.Integer(), nullable=True),
+    sa.Column('day1', sa.Integer(), nullable=True),
+    sa.Column('day2', sa.Integer(), nullable=True),
+    sa.Column('day3', sa.Integer(), nullable=True),
+    sa.Column('day4', sa.Integer(), nullable=True),
+    sa.Column('day5', sa.Integer(), nullable=True),
+    sa.Column('day6', sa.Integer(), nullable=True),
+    sa.Column('day7', sa.Integer(), nullable=True),
+    sa.Column('day8', sa.Integer(), nullable=True),
+    sa.Column('day9', sa.Integer(), nullable=True),
+    sa.Column('day10', sa.Integer(), nullable=True),
+    sa.Column('day11', sa.Integer(), nullable=True),
+    sa.Column('day12', sa.Integer(), nullable=True),
+    sa.Column('day13', sa.Integer(), nullable=True),
+    sa.Column('day14', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['studentId'], ['students.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
