@@ -1,48 +1,61 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_restful import Api, Resource
+from models import db, Student, StudentData
 import psycopg2
 
+#Initialize Flask, SQLAlchemy, Migrations
 application = Flask(__name__)
-#specify user, pass, host, db name
-application.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhost/AthleteData'
-db = SQLAlchemy(application) 
+db.init_app(application)
 migrate = Migrate(application, db)
 
-#Create tables
-class Student(db.Model):
-    __tablename__ = 'students'
-    id = db.Column(db.Integer, primary_key=True)
-    team = db.Column(db.String(80), unique=False)
+#TODO put this in config file
+#specify user, pass, host, db name
+application.config[
+    'SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhost/DrugUse'
 
-class StudentData(db.Model):
-    __tablename__ = 'data'
-    id = db.Column(db.Integer, primary_key=True)
-    studentId = db.Column(db.Integer, db.ForeignKey('students.id'))
-    q1 = db.Column(db.Integer)
-    q2 = db.Column(db.Integer)
-    q3 = db.Column(db.Integer)
-    q4 = db.Column(db.Integer)
-    q5 = db.Column(db.Integer)
+#Insert into Database
+#addStudent = Student('bball')
+# db.session.add(addStudent)
+# db.session.commit()
 
-#Create routes
-@application.route('/')
-def index():
-    #return render_template('index.html')
-    return 'Hello World!'
 
+def test():
+    addStudent = Student('ballislife')
+    db.session.add(addStudent)
+    db.session.commit()
+
+
+#TODO Rest API
+#GET
+
+
+#POST
+class Index(Resource):
+    def get(self):
+        return {"message": "Hello, World!"}
+        #return {userId: students[team]}
+
+
+api.add_resource(Index, '/')
+
+
+class Questions(Resource):
+    def get(self):
+        return {"message": "Hello, World!"}
+
+
+api.add_resource(Questions, '/questions')
+
+#Run App
 if __name__ == "__main__":
-    application.run(debug = True)
+    #TODO turn debug mode off for production
+    application.run(debug=True)
     db.create_all()
 
-
-
-# @application.route('/hello.html')
-# def hello():
-#     return render_template('hello.html')
-
-# @application.route('/result',methods = ['POST', 'GET'])
-# def result():
-#    if request.method == 'POST':
-#       result = request.form
-#       return render_template("result.html",result = result)
+#index is home page
+#hello.html is next page they go to for questionnaire
+#result.html
+#for questionnaire its going to be 2 weeks data (14 days)
+#and its going to have the same questioni --how many drinks did you drink that day (int value)?
