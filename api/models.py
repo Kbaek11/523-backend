@@ -4,19 +4,21 @@ db = SQLAlchemy()
 
 
 #Database
-class Student(db.Model):
-    __tablename__ = 'students'
+class Users(db.Model):
+    __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
+    userId = db.Column(db.Integer, unique=True)
     team = db.Column(db.String(80), unique=False)
 
-    def __init__(self, team):
+    def __init__(self, userId, team):
+        self.userId = userId
         self.team = team
 
 
-class StudentData(db.Model):
+class UserData(db.Model):
     __tablename__ = 'data'
     id = db.Column(db.Integer, primary_key=True)
-    studentId = db.Column(db.Integer, db.ForeignKey('students.id'))
+    studentId = db.Column(db.Integer, db.ForeignKey('users.userId'))
     day1 = db.Column(db.Integer)
     day2 = db.Column(db.Integer)
     day3 = db.Column(db.Integer)

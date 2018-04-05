@@ -1,8 +1,7 @@
-from flask import Flask
+from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from flask_restful import Api, Resource
-from models import db, Student, StudentData
+from models import db, Users, UserData
 import psycopg2
 
 #Initialize Flask, SQLAlchemy, Migrations
@@ -20,33 +19,48 @@ application.config[
 # db.session.add(addStudent)
 # db.session.commit()
 
-
-def test():
-    addStudent = Student('ballislife')
-    db.session.add(addStudent)
-    db.session.commit()
-
-
 #TODO Rest API
-#GET
+
+#endpoint to create new user
+# @application.route("/", methods=["POST"])
+# def addUser():
+#     if request.method == 'POST':
+#         userId = request.form['userId']
+#         team = request.form['team']
+#         newUser = Users(userId, team)
+#         db.session.add(newUser)
+#         db.session.commit()
+
+#    return 401
+# @application.route('/test', methods=['GET', 'POST'])
+# def test():
+#     if request.method == 'GET':
+#         return (
+#             '<form action="/test" method="post"><input type="submit" value="Send" /></form>'
+#         )
+
+#     elif request.method == 'POST':
+#         return "OK this is a post method"
+#     else:
+#         return ("ok")
+
+# # endpoint to get user info by id
+# @app.route("/<id>", methods=["GET"])
+# def user_detail(id):
+#     user = Users.query.get(id)
+#     return .jsonify(user)
 
 
-#POST
-class Index(Resource):
-    def get(self):
-        return {"message": "Hello, World!"}
-        #return {userId: students[team]}
+@application.route('/', methods=['GET', 'POST'])
+def addUser():
+    if request.method == 'POST':
+        userId = request.form['userId']
+        team = request.form['team']
+        newUser = Users(userId, team)
+        db.session.add(newUser)
+        db.session.commit()
+    return jsonify(userId=request.form[userId], team=request.form[team])
 
-
-api.add_resource(Index, '/')
-
-
-class Questions(Resource):
-    def get(self):
-        return {"message": "Hello, World!"}
-
-
-api.add_resource(Questions, '/questions')
 
 #Run App
 if __name__ == "__main__":
