@@ -13,19 +13,6 @@ export default class Home extends React.Component {
   this.setState({ fields });
   };
 
-  const response = await fetch(
-    ${publicRuntimeConfig.API_HOST}/session,
-    {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-        },
-        credentials: 'include',
-        body: JSON.stringify(payload),
-    },
-  );
-
   render() {
     return (
       <div class="container-fluid">
