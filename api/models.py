@@ -15,10 +15,27 @@ class Users(db.Model):
         self.team = team
 
 
-class UserData(db.Model):
-    __tablename__ = 'data'
+class CalendarAnswers(db.Model):
+    __tablename__ = 'calendaranswers'
     id = db.Column(db.Integer, primary_key=True)
-    studentId = db.Column(db.Integer, db.ForeignKey('users.userId'))
+    userId = db.Column(db.Integer, db.ForeignKey('users.userId'))
+    calendarId = db.Column(db.Integer, db.ForeignKey('calendar.id'))
+    a1 = db.Column(db.Integer)
+    a2 = db.Column(db.Integer)
+    a3 = db.Column(db.Integer)
+
+    def __init__(self, userId, calendarId, a1, a2, a3):
+        self.userId = userId
+        self.calendarId = calendarId
+        self.a1 = a1
+        self.a2 = a2
+        self.a3 = a3
+
+
+class Calendar(db.Model):
+    __tablename__ = 'calendar'
+    id = db.Column(db.Integer, primary_key=True)
+    userId = db.Column(db.Integer, db.ForeignKey('users.userId'))
     day1 = db.Column(db.Integer)
     day2 = db.Column(db.Integer)
     day3 = db.Column(db.Integer)
@@ -34,9 +51,9 @@ class UserData(db.Model):
     day13 = db.Column(db.Integer)
     day14 = db.Column(db.Integer)
 
-    def __init__(self, studentId, day1, day2, day3, day4, day5, day6, day7,
-                 day8, day9, day10, day11, day12, day13, day14):
-        self.studentId = studentId
+    def __init__(self, userId, day1, day2, day3, day4, day5, day6, day7, day8,
+                 day9, day10, day11, day12, day13, day14):
+        self.userId = userId
         self.day1 = day1
         self.day2 = day2
         self.day3 = day3
@@ -51,3 +68,32 @@ class UserData(db.Model):
         self.day12 = day12
         self.day13 = day13
         self.day14 = day14
+
+
+class TrueFalse(db.Model):
+    __tablename__ = 'truefalse'
+    id = db.Column(db.Integer, primary_key=True)
+    userId = db.Column(db.Integer, db.ForeignKey('users.userId'))
+    q1 = db.Column(db.Boolean)
+    q2 = db.Column(db.Boolean)
+    q3 = db.Column(db.Boolean)
+    q4 = db.Column(db.Boolean)
+    q5 = db.Column(db.Boolean)
+    q6 = db.Column(db.Boolean)
+    q7 = db.Column(db.Boolean)
+    q8 = db.Column(db.Boolean)
+    q9 = db.Column(db.Boolean)
+    q10 = db.Column(db.Boolean)
+
+    def __init__(self, userId, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10):
+        self.userId = userId
+        self.q1 = q1
+        self.q2 = q2
+        self.q3 = q3
+        self.q4 = q4
+        self.q5 = q5
+        self.q6 = q6
+        self.q7 = q7
+        self.q8 = q8
+        self.q9 = q9
+        self.q10 = q10

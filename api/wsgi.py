@@ -1,5 +1,4 @@
 from flask import Flask, jsonify, request, abort
-#from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from models import db, Users, Calendar, TrueFalse
 import psycopg2
