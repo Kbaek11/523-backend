@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import './index.css';
+import { BrowserRouter as Router, Link, NavLink} from 'react-router-dom';
+// import './index.css';
 import IdTeam from './IdTeam';
 
 export default class Home extends React.Component {
@@ -11,6 +12,19 @@ export default class Home extends React.Component {
   onSubmit = (fields) => {
   this.setState({ fields });
   };
+
+  const response = await fetch(
+    ${publicRuntimeConfig.API_HOST}/session,
+    {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify(payload),
+    },
+  );
 
   render() {
     return (

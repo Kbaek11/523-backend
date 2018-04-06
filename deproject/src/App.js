@@ -4,7 +4,7 @@ import Route from 'react-router-dom/Route';
 import './index.css';
 
 import Home from "./components/Home";
-import IdTeam from "./components/IdTeam";
+import Form from "./components/Form";
 
 const Main = () => {
   return ( <h1> Main Form </h1>);
@@ -15,11 +15,10 @@ export default class App extends Component {
     return (
       <Router>
       <div className="App">
-      <NavLink to="/form">Form</NavLink>
+        <Link to="/form">Form</Link>
 
         <Route path="/" exact component={Home} />
-        <Route path="/form" exact component={IdTeam} />
-        <Route path="/main" exact strict component={Main} />
+        <Route path="/form" exact component={Form} />
 
       </div>
       </Router>

@@ -9,20 +9,26 @@
       <link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/style.css') }}" />
 
       <title>Drug Education Project</title>
-
       <!-- React JS -->
-      <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script>
-      <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script>
-      <script src="https://unpkg.com/babel-core@5.8.38/browser.min.js"></script>
-      <script type="text/babel" src="{{ url_for('static', filename='js/form.js') }}"></script>
+      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react.min.js"></script> -->
+      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.1/react-dom.min.js"></script> -->
+      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> -->
+      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.2/react.min.js"></script> -->
+      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.2/JSXTransformer.js"></script> -->
+      <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script> -->
+
+      <!-- <script src="https://unpkg.com/react@15.3.2/dist/react.js"></script> -->
+      <!-- <script src="https://unpkg.com/react-dom@15.3.2/dist/react-dom.js"></script> -->
+      <!-- <script src="https://unpkg.com/babel-core@5.8.38/browser.min.js"></script> -->
+      <!-- <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script> -->
+      <!-- <script type="text/babel" src="{{ url_for('static', filename='scripts/js/main.js') }}"></script> -->
     </head>
     <body>
       <div class="container">
-        <div id="form_container">
+        <div id="form_container" class="web-form">
 
         </div>
       </div>
-
 
       <!-- <div class="web-form">
         <form method="POST" action="/result">
@@ -39,4 +45,58 @@
       </div> -->
 
     </body>
+
+    <!-- React JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+    <script type="text/babel">
+    var Greeting = React.createClass ({
+        // render() {
+        //     return (<p>Hello world</p>);
+        // }
+          // updateLabel: fuction(event) {
+          //   this.setState({value: event.target.value});
+          // },
+
+          getInitialState() {
+            //set initial state of form inputs
+            return ({
+              id: '',
+              options: [{name:'Basketball'},
+                        {name: 'Volleyball'},
+                        {name: 'Soccer'},
+                        {name: 'Tennis'},
+                        {name: 'Football'}]
+            })
+          }
+
+          onSignInClick = (evt) => {
+            console.log('yes', evt);
+          }
+
+          ,render(){
+            return(
+              <div>
+              <form onSubmit={this.onSignInFormSubmit}>
+                <h2 className="form-signin-heading">Enter your <span title="The number you received from the Athletics Dept email">unique ID</span></h2>
+                  <input placeholder="Enter" ref="id">id</label>
+                  <label type="number" id="id" name="id" className="form-control" placeholder="id" onChange={this.handleidChange} required autoFocus />
+
+                  <input
+                    type="submit" />
+                  Next
+                  </button>
+              </form>
+              </div>
+            )
+          }
+    })
+
+    ReactDOM.render(
+      <Greeting />,
+      document.getElementById('form_container')
+    );
+    </script>
+
   </html>
