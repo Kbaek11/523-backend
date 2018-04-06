@@ -1,7 +1,7 @@
-from flask import Flask, jsonify, request
-from flask_sqlalchemy import SQLAlchemy
+from flask import Flask, jsonify, request, abort
+#from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from models import db, Users, UserData
+from models import db, Users, Calendar, TrueFalse
 import psycopg2
 
 #Initialize Flask, SQLAlchemy, Migrations
@@ -14,35 +14,7 @@ migrate = Migrate(application, db)
 application.config[
     'SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhost/DrugUse'
 
-#Insert into Database
-#addStudent = Student('bball')
-# db.session.add(addStudent)
-# db.session.commit()
-
 #TODO Rest API
-
-#endpoint to create new user
-# @application.route("/", methods=["POST"])
-# def addUser():
-#     if request.method == 'POST':
-#         userId = request.form['userId']
-#         team = request.form['team']
-#         newUser = Users(userId, team)
-#         db.session.add(newUser)
-#         db.session.commit()
-
-#    return 401
-# @application.route('/test', methods=['GET', 'POST'])
-# def test():
-#     if request.method == 'GET':
-#         return (
-#             '<form action="/test" method="post"><input type="submit" value="Send" /></form>'
-#         )
-
-#     elif request.method == 'POST':
-#         return "OK this is a post method"
-#     else:
-#         return ("ok")
 
 # # endpoint to get user info by id
 # @app.route("/<id>", methods=["GET"])
@@ -50,26 +22,31 @@ application.config[
 #     user = Users.query.get(id)
 #     return .jsonify(user)
 
-
+#TODO
 @application.route('/', methods=['GET', 'POST'])
 def addUser():
     if request.method == 'POST':
-        userId = request.form['userId']
-        team = request.form['team']
+        if not request.json:
+            abort(400)
+        payload = request.json
+        if not 'userId' in payload or not 'team' in payload:
+            raise Exception('Missing "userId" or "team" in JSON')
+        userId = payload['userId']
+        team = payload['team']
         newUser = Users(userId, team)
-        db.session.add(newUser)
-        db.session.commit()
-    return jsonify(userId=request.form[userId], team=request.form[team])
+        try:
+            db.session.add(newUser)
+            db.session.commit()
+        except:
+            raise Exception('Error when adding new user to the database')
+    message = {"return": {"message": "Successfully added user"}}
+    return jsonify(message), 200
+
+@application.route('/questions', methods=['GET', 'POST'])
 
 
-#Run App
+#Run Application
 if __name__ == "__main__":
     #TODO turn debug mode off for production
     application.run(debug=True)
     db.create_all()
-
-#index is home page
-#hello.html is next page they go to for questionnaire
-#result.html
-#for questionnaire its going to be 2 weeks data (14 days)
-#and its going to have the same questioni --how many drinks did you drink that day (int value)?
