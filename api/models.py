@@ -15,23 +15,6 @@ class Users(db.Model):
         self.team = team
 
 
-class CalendarAnswers(db.Model):
-    __tablename__ = 'calendaranswers'
-    id = db.Column(db.Integer, primary_key=True)
-    userId = db.Column(db.Integer, db.ForeignKey('users.userId'))
-    calendarId = db.Column(db.Integer, db.ForeignKey('calendar.id'))
-    a1 = db.Column(db.Integer)
-    a2 = db.Column(db.Integer)
-    a3 = db.Column(db.Integer)
-
-    def __init__(self, userId, calendarId, a1, a2, a3):
-        self.userId = userId
-        self.calendarId = calendarId
-        self.a1 = a1
-        self.a2 = a2
-        self.a3 = a3
-
-
 class Calendar(db.Model):
     __tablename__ = 'calendar'
     id = db.Column(db.Integer, primary_key=True)
@@ -68,6 +51,23 @@ class Calendar(db.Model):
         self.day12 = day12
         self.day13 = day13
         self.day14 = day14
+
+
+class CalendarAnswers(db.Model):
+    __tablename__ = 'calendaranswers'
+    id = db.Column(db.Integer, primary_key=True)
+    userId = db.Column(db.Integer, db.ForeignKey('users.userId'))
+    calendarId = db.Column(db.Integer, db.ForeignKey('calendar.id'))
+    a1 = db.Column(db.Integer)
+    a2 = db.Column(db.Integer)
+    a3 = db.Column(db.Integer)
+
+    def __init__(self, userId, calendarId, a1, a2, a3):
+        self.userId = userId
+        self.calendarId = calendarId
+        self.a1 = a1
+        self.a2 = a2
+        self.a3 = a3
 
 
 class TrueFalse(db.Model):
