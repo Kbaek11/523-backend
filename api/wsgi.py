@@ -2,7 +2,8 @@ from flask import Flask, jsonify, request, abort
 from flask_migrate import Migrate
 from models import db, Users, Calendar, TrueFalse
 import psycopg2
-
+#TODO add dates next to calendar instead of using monday, tuesday etc. Add a date when the survey was taken on JSON 
+#TODO ...and store on backend
 #Initialize Flask, SQLAlchemy, Migrations
 application = Flask(__name__)
 db.init_app(application)
