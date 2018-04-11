@@ -2,8 +2,10 @@ from flask import Flask, jsonify, request, abort
 from flask_migrate import Migrate
 from models import db, Users, Calendar, TrueFalse
 import psycopg2
-#TODO add dates next to calendar instead of using monday, tuesday etc. Add a date when the survey was taken on JSON 
+#TODO add dates next to calendar instead of using monday, tuesday etc. 
+# Add a date when the survey was taken on JSON 
 #TODO ...and store on backend
+
 #Initialize Flask, SQLAlchemy, Migrations
 application = Flask(__name__)
 db.init_app(application)
@@ -22,7 +24,6 @@ application.config[
 #     user = Users.query.get(id)
 #     return .jsonify(user)
 
-#TODO
 @application.route('/', methods=['GET', 'POST'])
 def addUser():
     if request.method == 'POST':
@@ -39,8 +40,8 @@ def addUser():
             db.session.commit()
         except:
             raise Exception('Error when adding new user to the database')
-    message = {"return": {"message": "Successfully added user"}}
-    return jsonify(message), 200
+    #message = {"return": {"message": "Successfully added user"}}
+    return jsonify({"return": {"message": "Successfully added user"}}), 200
 
 @application.route('/questions', methods=['GET', 'POST'])
 
