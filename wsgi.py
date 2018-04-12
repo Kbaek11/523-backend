@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, abort
 from flask_migrate import Migrate
-from models import db, Users, Calendar, TrueFalse
+from models import db, Users, UserAnswers
 import psycopg2
 #TODO add dates next to calendar instead of using monday, tuesday etc. 
 # Add a date when the survey was taken on JSON 
@@ -16,15 +16,8 @@ migrate = Migrate(application, db)
 application.config[
     'SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhost/DrugUse'
 
-#TODO Rest API
-
-# # endpoint to get user info by id
-# @app.route("/<id>", methods=["GET"])
-# def user_detail(id):
-#     user = Users.query.get(id)
-#     return .jsonify(user)
-
-@application.route('/', methods=['GET', 'POST'])
+#API Routes
+@application.route('/', methods=['POST'])
 def addUser():
     if request.method == 'POST':
         if not request.json:
@@ -32,19 +25,25 @@ def addUser():
         payload = request.json
         if not 'userId' in payload or not 'team' in payload:
             raise Exception('Missing "userId" or "team" in JSON')
-        userId = payload['userId']
-        team = payload['team']
-        newUser = Users(userId, team)
+        newUser = Users(payload['userId'], payload['team'])
         try:
             db.session.add(newUser)
             db.session.commit()
         except:
             raise Exception('Error when adding new user to the database')
-    #message = {"return": {"message": "Successfully added user"}}
-    return jsonify({"return": {"message": "Successfully added user"}}), 200
+        return jsonify({"return": {"message": "Successfully added user"}}), 200
+    
 
-@application.route('/questions', methods=['GET', 'POST'])
-
+@application.route('/questions', methods=['POST'])
+def addUserAnswers():
+    if request.method == 'POST':
+        if not request.json:
+            
+@application.route('/results', methods=['GET'])
+def returnResults():
+    if request.method == 'GET':
+        
+            
 
 #Run Application
 if __name__ == "__main__":
