@@ -7,7 +7,6 @@ db = SQLAlchemy()
 #Database
 class Users(db.Model):
     __tablename__ = 'users'
-    #TODO Mabe I can make my userId be the primary key
     userId = db.Column(db.Integer, primary_key=True)
     team = db.Column(db.String(80))
 
@@ -76,37 +75,55 @@ class UserAnswers(db.Model):
     q9 = db.Column(db.Boolean)
     q10 = db.Column(db.Boolean)
 
-    def __init__(self, userId, day1a, day1b, day1c, day2a, day2b, day2c, day3a,
-                 day3b, day3c, day4a, day4b, day4c, day5a, day5b, day5c, day6a,
-                 day6b, day6c, day7a, day7b, day7c, day8a, day8b, day8c, day9a,
-                 day9b, day9c, day10a, day10b, day10c, day11a, day11b, day11c,
-                 day12a, day12b, day12c, day13a, day13b, day13c, day14a,
-                 day14b, day14c, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10):
-        self.userId = userId
-        self.day1 = day1
-        self.day2 = day2
-        self.day3 = day3
-        self.day4 = day4
-        self.day5 = day5
-        self.day6 = day6
-        self.day7 = day7
-        self.day8 = day8
-        self.day9 = day9
-        self.day10 = day10
-        self.day11 = day11
-        self.day12 = day12
-        self.day13 = day13
-        self.day14 = day14
-        self.q1 = q1
-        self.q2 = q2
-        self.q3 = q3
-        self.q4 = q4
-        self.q5 = q5
-        self.q6 = q6
-        self.q7 = q7
-        self.q8 = q8
-        self.q9 = q9
-        self.q10 = q10
+    # def __init__(self, userId, day1a, day1b, day1c, day2a, day2b, day2c, day3a,
+    #              day3b, day3c, day4a, day4b, day4c, day5a, day5b, day5c, day6a,
+    #              day6b, day6c, day7a, day7b, day7c, day8a, day8b, day8c, day9a,
+    #              day9b, day9c, day10a, day10b, day10c, day11a, day11b, day11c,
+    #              day12a, day12b, day12c, day13a, day13b, day13c, day14a,
+    #              day14b, day14c, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10):
+    #     self.userId = userId
+    #     self.day1a = day1a
+    #     self.day1b = day1b
+    #     self.day1c = day1c
+    #     self.day2a = day2a
+    #     self.day2b = day2b
+    #     self.day2c = day2c
+    #     self.day3a = day3a
+    #     self.day3b = day3b
+    #     self.day3c = day3c
+    #     self.day4a = day4a
+    #     self.day4b = day4b
+    #     self.day4c = day4c
+    #     self.day5a = day5a
+    #     self.day5b = day5b
+    #     self.day5c = day5c
+    #     self.day6a = day6a
+    #     self.day6b = day6b
+    #     self.day6c = day6c
+    #     self.day7a = day7a
+    #     self.day7b = day7b
+    #     self.day7c = day7c
+    #     self.day8a = day8a
+    #     self.day8b = day8b
+    #     self.day8c = day8c
+    #     self.day9a = day9a
+    #     self.day9b = day9b
+    #     self.day9c = day9c
+    #     self.day10a = day10a
+    #     self.day10b = day10b
+    #     self.day10c = day10c
+    #     self.day11a = day11a
+    #     self.day11b = day11b
+    #     self.day11c = day11c
+    #     self.day12a = day12a
+    #     self.day12b = day12b
+    #     self.day12c = day12c
+    #     self.day13a = day13a
+    #     self.day13b = day13b
+    #     self.day13c = day13c
+    #     self.day14a = day14a
+    #     self.day14b = day14b
+    #     self.day14c = day14c
 
 
 # class UserCalendarAnswers(db.Model):
