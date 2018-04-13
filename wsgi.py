@@ -13,8 +13,10 @@ migrate = Migrate(application, db)
 
 #TODO put this in config file
 #specify user, pass, host, db name
+#application.config[
+#    'SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhost/DrugUse'
 application.config[
-    'SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhost/DrugUse'
+    'SQLALCHEMY_DATABASE_URI'] = 'postgres://mojsigvdgdscae:dce63123f073abe4e86cf543e59d863ce29d97c74ca67010b76d63491ad6ff81@ec2-107-20-173-71.compute-1.amazonaws.com:5432/dajeu4qvubevhj'
 
 
 #API Routes
