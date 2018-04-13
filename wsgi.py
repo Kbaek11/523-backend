@@ -44,9 +44,9 @@ def addUserAnswers():
         if not 'userId' in j:
             raise Exception('Missing "userId" in JSON')
         userAnswers = UserAnswers()
-        userAnswers.day1a = j['userId']['day1a']
-        userAnswers.day1b = j['userId']['day1b']
-        userAnswers.day1c = j['userId']['day1c']
+        userAnswers.day1a = j['day1a']
+        userAnswers.day1b = j['day1b']
+        userAnswers.day1c = j['day1c']
         try:
             db.session.add(userAnswers)
             db.session.commit()
