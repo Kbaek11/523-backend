@@ -19,8 +19,9 @@ class UserAnswers(db.Model):
     __tablename__ = 'calendar'
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer, db.ForeignKey('users.userId'))
-    answeredDate = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-    
+    answeredDate = db.Column(
+        db.DateTime, nullable=False, default=datetime.utcnow)
+
     day1a = db.Column(db.String(80))
     day1b = db.Column(db.String(80))
     day1c = db.Column(db.String(80))
