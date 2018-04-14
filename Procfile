@@ -1,1 +1,2 @@
-web: gunicorn drug-education-project-backend:app --log-file=-
+web: gunicorn wsgi:application
+release: python wsgi.py db upgrade
