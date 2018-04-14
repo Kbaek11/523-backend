@@ -1,2 +1,2 @@
-web: gunicorn wsgi:application
-release: python wsgi.py db upgrade
+#web: gunicorn wsgi:application
+r#elease: python wsgi.py db upgrade
