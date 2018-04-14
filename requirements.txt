@@ -5,5 +5,5 @@ flask_migrate
 psycopg2
 request
 jsonify
-os
+
 
