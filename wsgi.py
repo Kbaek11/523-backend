@@ -13,7 +13,7 @@ application = Flask(__name__)
 db.init_app(application)
 migrate = Migrate(application, db)
 
-DB_URL = os.environ.get('DATABSE_URL')
+DB_URL = os.environ['DATABASE_URL']
 if not DB_URL:
     DB_URL = 'postgresql://postgres:password@localhost/DrugUse'
 application.config['SQLALCHEMY_DATABASE_URI'] = DB_URL
