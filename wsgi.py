@@ -1,8 +1,9 @@
 from flask import Flask, jsonify, request, abort
 from flask_migrate import Migrate
 from models import db, Users, UserAnswers
-import os
 import psycopg2
+import os
+
 #TODO add dates next to calendar instead of using monday, tuesday etc.
 #if json field is empty from frontend such as user answering something
 #make it so that there is a default value in json before posting
@@ -14,11 +15,11 @@ migrate = Migrate(application, db)
 
 #TODO put this in config file
 #specify user, pass, host, db name
-#application.config[
+# application.config[
 #    'SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhost/DrugUse'
-application.config[
-    'SQLALCHEMY_DATABASE_URI'] = ''
-'
+
+application.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
+
 
 #API Routes
 @application.route('/', methods=['POST'])
