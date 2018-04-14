@@ -18,7 +18,7 @@ migrate = Migrate(application, db)
 # application.config[
 #    'SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhost/DrugUse'
 
-application.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
+application.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
 
 
 #API Routes
