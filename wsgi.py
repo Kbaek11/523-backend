@@ -13,12 +13,10 @@ application = Flask(__name__)
 db.init_app(application)
 migrate = Migrate(application, db)
 
-#TODO put this in config file
-#specify user, pass, host, db name
-# application.config[
-#    'SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhost/DrugUse'
-
-application.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+DB_URL = os.environ.get('DATABSE_URL')
+if not DB_URL:
+    DB_URL = 'postgresql://postgres:password@localhost/DrugUse'
+application.config['SQLALCHEMY_DATABASE_URI'] = DB_URL
 
 
 #API Routes
