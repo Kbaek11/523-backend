@@ -70,5 +70,5 @@ def returnResults():
 #Run Application
 if __name__ == "__main__":
     #TODO turn debug mode off for production
-    application.run(debug=True)
+    application.run(debug=False)
     db.create_all()
