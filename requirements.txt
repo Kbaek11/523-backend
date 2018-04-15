@@ -6,3 +6,4 @@ jsonify
 request
 flask-sqlalchemy
 flask-migrate
+python-dotenv
