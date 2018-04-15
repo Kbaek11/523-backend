@@ -75,5 +75,5 @@ def returnResults():
 #Run Application
 if __name__ == "__main__":
     #TODO turn debug mode off for production
-    application.run()
+    application.run(debug=True, host='0.0.0.0', port=33507)
     db.create_all()
