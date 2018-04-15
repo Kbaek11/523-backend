@@ -1,6 +1,6 @@
 gunicorn
 flask
-dotenv
+#dotenv
 psycopg2
 jsonify
 request
