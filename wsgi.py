@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request, abort
+from flask_migrate import Migrate
 from models import db, Users, UserAnswers
 from manage import migrate
 import psycopg2
@@ -11,7 +12,7 @@ import os
 #Initialize Flask, SQLAlchemy, Migrations
 application = Flask(__name__)
 db.init_app(application)
-migrate.init_app(application, db)
+migrate = Migrate(application, db)
 
 DB_URL = os.environ['DATABASE_URL']
 if not DB_URL:
@@ -70,5 +71,5 @@ def returnResults():
 #Run Application
 if __name__ == "__main__":
     #TODO turn debug mode off for production
-    application.run(debug=False)
+    application.run()
     db.create_all()
