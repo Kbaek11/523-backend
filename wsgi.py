@@ -1,7 +1,6 @@
 from flask import Flask, jsonify, request, abort
-from flask_migrate import Migrate
 from models import db, Users, UserAnswers
-from manage import migrate
+from flask_migrate import Migrate
 import psycopg2
 import os
 
@@ -14,7 +13,10 @@ application = Flask(__name__)
 db.init_app(application)
 migrate = Migrate(application, db)
 
-DB_URL = os.environ['DATABASE_URL']
+try:
+    DB_URL = os.environ['DATABASE_URL']
+except:
+    DB_URL = None
 if not DB_URL:
     DB_URL = 'postgresql://postgres:password@localhost/DrugUse'
 application.config['SQLALCHEMY_DATABASE_URI'] = DB_URL
