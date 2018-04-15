@@ -1,22 +1,24 @@
 from flask import Flask, jsonify, request, abort
 from models import db, Users, UserAnswers
 from flask_migrate import Migrate
-import psycopg2
+from dotenv import load_dotenv
+from os.path import join, dirname
 import os
-
-#TODO add dates next to calendar instead of using monday, tuesday etc.
-#if json field is empty from frontend such as user answering something
-#make it so that there is a default value in json before posting
+import psycopg2
 
 #Initialize Flask, SQLAlchemy, Migrations
 application = Flask(__name__)
 db.init_app(application)
 migrate = Migrate(application, db)
 
+dotenvPath = join(dirname(__file__), '.env')
+load_dotenv(dotenvPath)
+
 try:
-    DB_URL = os.environ['DATABASE_URL']
+    DB_URL = os.environ.get('DATABASE_URL')
 except:
     DB_URL = None
+
 if not DB_URL:
     DB_URL = 'postgresql://postgres:password@localhost/DrugUse'
 application.config['SQLALCHEMY_DATABASE_URI'] = DB_URL
