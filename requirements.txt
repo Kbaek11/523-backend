@@ -4,3 +4,5 @@ dotenv
 psycopg2
 jsonify
 request
+flask-sqlalchemy
+flask-migrate
