@@ -1,0 +1,9 @@
+
+gunicorn
+flask
+flask_sqlalchemy
+flask_migrate
+psycopg2
+request
+jsonify
+
