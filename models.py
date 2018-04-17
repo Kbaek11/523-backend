@@ -14,6 +14,12 @@ class Users(db.Model):
         self.userId = userId
         self.team = team
 
+    def serialize(self):
+        return {
+            'userId': self.userId,
+            'team': self.team,
+        }
+
 
 class UserAnswers(db.Model):
     __tablename__ = 'calendar'
