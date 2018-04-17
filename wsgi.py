@@ -6,14 +6,16 @@ from os.path import join, dirname
 import os
 import psycopg2  #pylint: disable=E0401
 
-#Initialize Flask, SQLAlchemy, Migrations
+#Initialize Flask, SQLAlchemy, Migrate
 application = Flask(__name__)
 db.init_app(application)
 migrate = Migrate(application, db)
 
+#Load .env file
 dotenvPath = join(dirname(__file__), '.env')
 load_dotenv(dotenvPath)
 
+#Connect to Database
 try:
     DB_URL = os.environ.get('DATABASE_URL')
 except:
