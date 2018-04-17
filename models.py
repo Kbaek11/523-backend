@@ -1,4 +1,4 @@
-from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy  # pylint: disable=E0401
 from datetime import datetime
 
 db = SQLAlchemy()
