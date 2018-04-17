@@ -34,14 +34,19 @@ def addUser():
         if not 'userId' in payload or not 'team' in payload:
             raise Exception('Missing "userId" or "team" in JSON')
         newUser = Users(payload['userId'], payload['team'])
-        #allUsers = Users.query.all()
-        #print(len(allUsers))
         try:
             db.session.add(newUser)
             db.session.commit()
         except:
             raise Exception('Error when adding new user to the database')
         return jsonify({"return": {"message": "Successfully added user"}}), 200
+
+
+@application.route('/', methods=['GET'])
+def returnUserData():
+    if request.method == 'GET':
+        usersList = (Users.query.order_by(Users.userId).all())
+        return jsonify([user.serialize() for user in usersList])
 
 
 @application.route('/questions', methods=['POST'])
@@ -61,7 +66,8 @@ def addUserAnswers():
             j['day9a'], j['day9b'], j['day9c'], j['day10a'], j['day10b'],
             j['day10c'], j['day11a'], j['day11b'], j['day11c'], j['day12a'],
             j['day12b'], j['day12c'], j['day13a'], j['day13b'], j['day13c'],
-            j['day14a'], j['day14b'], j['day14c'], j['q1'],j['q2'],j['q3'],j['q4'],j['q5'],j['q6'],j['q7'],j['q8'],j['q9'],j['q10'])
+            j['day14a'], j['day14b'], j['day14c'], j['q1'], j['q2'], j['q3'],
+            j['q4'], j['q5'], j['q6'], j['q7'], j['q8'], j['q9'], j['q10'])
 
         try:
             db.session.add(userAnswers)
@@ -84,5 +90,5 @@ def returnResults():
 #Run Application
 if __name__ == "__main__":
     #TODO turn debug mode off for production
-    application.run(host='0.0.0.0', port=33507)
+    application.run(host='0.0.0.0', port=33507, debug=False)
     db.create_all()
