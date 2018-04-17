@@ -34,6 +34,8 @@ def addUser():
         if not 'userId' in payload or not 'team' in payload:
             raise Exception('Missing "userId" or "team" in JSON')
         newUser = Users(payload['userId'], payload['team'])
+        #allUsers = Users.query.all()
+        #print(len(allUsers))
         try:
             db.session.add(newUser)
             db.session.commit()
@@ -50,10 +52,17 @@ def addUserAnswers():
         j = request.json
         if not 'userId' in j:
             raise Exception('Missing "userId" in JSON')
-        userAnswers = UserAnswers()
-        userAnswers.day1a = j['day1a']
-        userAnswers.day1b = j['day1b']
-        userAnswers.day1c = j['day1c']
+        userAnswers = UserAnswers(
+            j['userId'], j['day1a'], j['day1b'], j['day1c'], j['day2a'],
+            j['day2b'], j['day2c'], j['day3a'], j['day3b'], j['day3c'],
+            j['day4a'], j['day4b'], j['day4c'], j['day5a'], j['day5b'],
+            j['day5c'], j['day6a'], j['day6b'], j['day6c'], j['day7a'],
+            j['day7b'], j['day7c'], j['day8a'], j['day8b'], j['day8c'],
+            j['day9a'], j['day9b'], j['day9c'], j['day10a'], j['day10b'],
+            j['day10c'], j['day11a'], j['day11b'], j['day11c'], j['day12a'],
+            j['day12b'], j['day12c'], j['day13a'], j['day13b'], j['day13c'],
+            j['day14a'], j['day14b'], j['day14c'], j['q1'],j['q2'],j['q3'],j['q4'],j['q5'],j['q6'],j['q7'],j['q8'],j['q9'],j['q10'])
+
         try:
             db.session.add(userAnswers)
             db.session.commit()
