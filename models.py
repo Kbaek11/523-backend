@@ -73,16 +73,16 @@ class UserAnswers(db.Model):
     day14b = db.Column(db.String(80))
     day14c = db.Column(db.String(80))
 
-    q1 = db.Column(db.Boolean)
-    q2 = db.Column(db.Boolean)
-    q3 = db.Column(db.Boolean)
-    q4 = db.Column(db.Boolean)
-    q5 = db.Column(db.Boolean)
-    q6 = db.Column(db.Boolean)
-    q7 = db.Column(db.Boolean)
-    q8 = db.Column(db.Boolean)
-    q9 = db.Column(db.Boolean)
-    q10 = db.Column(db.Boolean)
+    q1 = db.Column(db.String(80))
+    q2 = db.Column(db.String(80))
+    q3 = db.Column(db.String(80))
+    q4 = db.Column(db.String(80))
+    q5 = db.Column(db.String(80))
+    q6 = db.Column(db.String(80))
+    q7 = db.Column(db.String(80))
+    q8 = db.Column(db.String(80))
+    q9 = db.Column(db.String(80))
+    q10 = db.Column(db.String(80))
 
     def serialize(self):
         return {
