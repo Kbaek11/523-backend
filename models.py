@@ -4,7 +4,7 @@ from datetime import datetime
 db = SQLAlchemy()
 
 
-#Database
+#Database Tables
 class Users(db.Model):
     __tablename__ = 'users'
     userId = db.Column(db.Integer, primary_key=True)
@@ -193,47 +193,3 @@ class UserAnswers(db.Model):
         self.day14b = day14b
         self.day14c = day14c
 
-
-# class UserCalendarAnswers(db.Model):
-#     __tablename__ = 'calendaranswers'
-#     id = db.Column(db.Integer, primary_key=True)
-#     userId = db.Column(db.Integer, db.ForeignKey('users.userId'))
-#     calendarId = db.Column(db.Integer, db.ForeignKey('calendar.id'))
-#     answer1 = db.Column(db.Integer)
-#     answer2 = db.Column(db.Integer)
-#     answer3 = db.Column(db.Integer)
-
-#     def __init__(self, userId, calendarId, answer1, answer2, answer3):
-#         self.userId = userId
-#         self.calendarId = calendarId
-#         self.answer1 = answer1
-#         self.answer2 = answer2
-#         self.answer3 = answer3
-
-# class TrueFalse(db.Model):
-#     __tablename__ = 'truefalse'
-#     id = db.Column(db.Integer, primary_key=True)
-#     userId = db.Column(db.Integer, db.ForeignKey('users.userId'))
-#     q1 = db.Column(db.Boolean)
-#     q2 = db.Column(db.Boolean)
-#     q3 = db.Column(db.Boolean)
-#     q4 = db.Column(db.Boolean)
-#     q5 = db.Column(db.Boolean)
-#     q6 = db.Column(db.Boolean)
-#     q7 = db.Column(db.Boolean)
-#     q8 = db.Column(db.Boolean)
-#     q9 = db.Column(db.Boolean)
-#     q10 = db.Column(db.Boolean)
-
-#     def __init__(self, userId, q1, q2, q3, q4, q5, q6, q7, q8, q9, q10):
-#         self.userId = userId
-#         self.q1 = q1
-#         self.q2 = q2
-#         self.q3 = q3
-#         self.q4 = q4
-#         self.q5 = q5
-#         self.q6 = q6
-#         self.q7 = q7
-#         self.q8 = q8
-#         self.q9 = q9
-#         self.q10 = q10
