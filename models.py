@@ -138,7 +138,8 @@ class UserAnswers(db.Model):
             'q7': self.q7,
             'q8': self.q8,
             'q9': self.q9,
-            'q10': self.q10
+            'q10': self.q10,
+            'date': self.answeredDate
         }
     
 
