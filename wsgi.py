@@ -89,9 +89,10 @@ def returnUserAnswers():
         return (jsonify([user.serialize() for user in userAnswersList]))
 
 @application.route('/results', methods=['GET'])
-def returnResults():
+def retrunResults():
     if request.method == 'GET':
-        print('')
+        userAnswersList = (UserAnswers.query.order_by(Users.userId).all())
+        return (jsonify([user.serialize() for user in userAnswersList]))
 
 
 #Run Application
