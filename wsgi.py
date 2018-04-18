@@ -82,6 +82,12 @@ def addUserAnswers():
             }
         }), 200
 
+@application.route('/questions', methods=['GET'])
+def returnUserAnswers():
+    if request.method == 'GET':
+        usersList = (UserAnswers.query.order_by(UserAnswers.userId).all())
+        #print usersList
+        return jsonify([user.serialize() for user in usersList])
 
 @application.route('/results', methods=['GET'])
 def returnResults():
