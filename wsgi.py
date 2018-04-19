@@ -93,12 +93,12 @@ def returnUserAnswers():
 @application.route('/results', methods=['GET'])
 def returnResults():
     if request.method == 'GET':
-        userAnswersList = (UserAnswers.query.order_by(UserAnswers.userId))
+        userAnswersList = (UserAnswers.query.order_by((UserAnswers.answeredDate.desc())))
         return jsonify([user.serialize() for user in userAnswersList])
 
 
 # Run Application
 if __name__ == "__main__":
     # TODO turn debug mode off for production
-    application.run(host='0.0.0.0', port=33507, debug=False)
+    application.run(host='0.0.0.0', port=33507, debug=True)
     db.create_all()
