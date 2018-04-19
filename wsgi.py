@@ -1,21 +1,21 @@
-from flask import Flask, jsonify, request, abort  #pylint: disable=E0401
+from flask import Flask, jsonify, request, abort  # pylint: disable=E0401
 from models import db, Users, UserAnswers
-from flask_migrate import Migrate  #pylint: disable=E0401
-from dotenv import load_dotenv  #pylint: disable=E0401
+from flask_migrate import Migrate  # pylint: disable=E0401
+from dotenv import load_dotenv  # pylint: disable=E0401
 from os.path import join, dirname
 import os
-import psycopg2  #pylint: disable=E0401
+import psycopg2  # pylint: disable=E0401
 
-#Initialize Flask, SQLAlchemy, Migrate
+# Initialize Flask, SQLAlchemy, Migrate
 application = Flask(__name__)
 db.init_app(application)
 migrate = Migrate(application, db)
 
-#Load .env file
+# Load .env file
 dotenvPath = join(dirname(__file__), '.env')
 load_dotenv(dotenvPath)
 
-#Connect to Database
+# Connect to Database
 try:
     DB_URL = os.environ.get('DATABASE_URL')
 except:
@@ -26,7 +26,7 @@ if not DB_URL:
 application.config['SQLALCHEMY_DATABASE_URI'] = DB_URL
 
 
-#API Routes
+# API Routes
 @application.route('/', methods=['POST'])
 def addUser():
     if request.method == 'POST':
@@ -67,8 +67,8 @@ def addUserAnswers():
             payload['day7b'], payload['day7c'], payload['day8a'], payload['day8b'], payload['day8c'],
             payload['day9a'], payload['day9b'], payload['day9c'], payload['day10a'], payload['day10b'],
             payload['day10c'], payload['day11a'], payload['day11b'], payload['day11c'], payload['day12a'],
-            payload['day12b'], payload['day12c'], payload['day13a'], payload['day13b'], payload['day13c'],payload['day14a'], payload['day14b'], payload['day14c'], payload['q1'], payload['q2'], payload['q3'],
-            
+            payload['day12b'], payload['day12c'], payload['day13a'], payload['day13b'], payload['day13c'],
+            payload['day14a'], payload['day14b'], payload['day14c'], payload['q1'], payload['q2'], payload['q3'],
             payload['q4'], payload['q5'], payload['q6'], payload['q7'], payload['q8'], payload['q9'], payload['q10'])
 
         try:
@@ -82,11 +82,13 @@ def addUserAnswers():
             }
         }), 200
 
+
 @application.route('/questions', methods=['GET'])
 def returnUserAnswers():
     if request.method == 'GET':
         userAnswersList = (UserAnswers.query.order_by(Users.userId).all())
         return (jsonify([user.serialize() for user in userAnswersList]))
+
 
 @application.route('/results', methods=['GET'])
 def retrunResults():
@@ -95,8 +97,8 @@ def retrunResults():
         return (jsonify([user.serialize() for user in userAnswersList]))
 
 
-#Run Application
+# Run Application
 if __name__ == "__main__":
-    #TODO turn debug mode off for production
+    # TODO turn debug mode off for production
     application.run(host='0.0.0.0', port=33507, debug=False)
     db.create_all()
