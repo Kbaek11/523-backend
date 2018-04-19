@@ -4,7 +4,7 @@ from datetime import datetime
 db = SQLAlchemy()
 
 
-#Database Tables
+# Database Tables
 class Users(db.Model):
     __tablename__ = 'users'
     userId = db.Column(db.Integer, primary_key=True)
@@ -19,8 +19,6 @@ class Users(db.Model):
     def __init__(self, userId, team):
         self.userId = userId
         self.team = team
-
-
 
 
 class UserAnswers(db.Model):
@@ -141,7 +139,6 @@ class UserAnswers(db.Model):
             'q10': self.q10,
             'date': self.answeredDate
         }
-    
 
     def __init__(self, userId, day1a, day1b, day1c, day2a, day2b, day2c, day3a,
                  day3b, day3c, day4a, day4b, day4c, day5a, day5b, day5c, day6a,
@@ -192,4 +189,3 @@ class UserAnswers(db.Model):
         self.day14a = day14a
         self.day14b = day14b
         self.day14c = day14c
-
