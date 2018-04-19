@@ -67,8 +67,8 @@ def addUserAnswers():
             payload['day7b'], payload['day7c'], payload['day8a'], payload['day8b'], payload['day8c'],
             payload['day9a'], payload['day9b'], payload['day9c'], payload['day10a'], payload['day10b'],
             payload['day10c'], payload['day11a'], payload['day11b'], payload['day11c'], payload['day12a'],
-            payload['day12b'], payload['day12c'], payload['day13a'], payload['day13b'], payload['day13c'],
-            payload['day14a'], payload['day14b'], payload['day14c'], payload['q1'], payload['q2'], payload['q3'],
+            payload['day12b'], payload['day12c'], payload['day13a'], payload['day13b'], payload['day13c'],payload['day14a'], payload['day14b'], payload['day14c'], payload['q1'], payload['q2'], payload['q3'],
+            
             payload['q4'], payload['q5'], payload['q6'], payload['q7'], payload['q8'], payload['q9'], payload['q10'])
 
         try:
