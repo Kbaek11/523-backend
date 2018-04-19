@@ -86,15 +86,15 @@ def addUserAnswers():
 @application.route('/questions', methods=['GET'])
 def returnUserAnswers():
     if request.method == 'GET':
-        userAnswersList = (UserAnswers.query.order_by(Users.userId).all())
-        return (jsonify([user.serialize() for user in userAnswersList]))
+        userAnswersList = (UserAnswers.query.order_by(UserAnswers.userId))
+        return jsonify([user.serialize() for user in userAnswersList])
 
 
 @application.route('/results', methods=['GET'])
-def retrunResults():
+def returnResults():
     if request.method == 'GET':
-        userAnswersList = (UserAnswers.query.order_by(Users.userId).all())
-        return (jsonify([user.serialize() for user in userAnswersList]))
+        userAnswersList = (UserAnswers.query.order_by(UserAnswers.userId))
+        return jsonify([user.serialize() for user in userAnswersList])
 
 
 # Run Application
