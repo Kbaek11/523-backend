@@ -16,13 +16,13 @@ dotenvPath = join(dirname(__file__), '.env')
 load_dotenv(dotenvPath)
 
 # Connect to Database
-try:
-    DB_URL = os.environ.get('DATABASE_URL')
-except:
-    DB_URL = None
+# try:
+#     DB_URL = os.environ.get('DATABASE_URL')
+# except:
+#     DB_URL = None
 
-if not DB_URL:
-    DB_URL = 'postgresql://postgres:password@localhost/DrugUse'
+# if not DB_URL:
+DB_URL = 'postgresql://postgres:password@localhost/DrugUse'
 application.config['SQLALCHEMY_DATABASE_URI'] = DB_URL
 
 
@@ -86,14 +86,16 @@ def addUserAnswers():
 @application.route('/questions', methods=['GET'])
 def returnUserAnswers():
     if request.method == 'GET':
-        userAnswersList = (UserAnswers.query.order_by(UserAnswers.userId))
+        userAnswersList = (UserAnswers.query.order_by(
+            (UserAnswers.answeredDate.desc())))
         return jsonify([user.serialize() for user in userAnswersList])
 
 
 @application.route('/results', methods=['GET'])
 def returnResults():
     if request.method == 'GET':
-        userAnswersList = (UserAnswers.query.order_by((UserAnswers.answeredDate.desc())))
+        userAnswersList = (UserAnswers.query.order_by(
+            (UserAnswers.answeredDate.desc())))
         return jsonify([user.serialize() for user in userAnswersList])
 
 
