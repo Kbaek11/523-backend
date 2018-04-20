@@ -22,7 +22,7 @@ except:
     DB_URL = None
 
 if not DB_URL:
-DB_URL = 'postgresql://postgres:password@localhost/DrugUse'
+    DB_URL = 'postgresql://postgres:password@localhost/DrugUse'
 application.config['SQLALCHEMY_DATABASE_URI'] = DB_URL
 
 
