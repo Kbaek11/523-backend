@@ -16,12 +16,12 @@ dotenvPath = join(dirname(__file__), '.env')
 load_dotenv(dotenvPath)
 
 # Connect to Database
-# try:
-#     DB_URL = os.environ.get('DATABASE_URL')
-# except:
-#     DB_URL = None
+try:
+    DB_URL = os.environ.get('DATABASE_URL')
+except:
+    DB_URL = None
 
-# if not DB_URL:
+if not DB_URL:
 DB_URL = 'postgresql://postgres:password@localhost/DrugUse'
 application.config['SQLALCHEMY_DATABASE_URI'] = DB_URL
 
