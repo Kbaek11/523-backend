@@ -7,7 +7,7 @@ db = SQLAlchemy()
 # Database Tables
 class Users(db.Model):
     __tablename__ = 'users'
-    userId = db.Column(db.Integer, primary_key=True)
+    userId = db.Column(db.String(40), primary_key=True)
     team = db.Column(db.String(80))
 
     def serialize(self):
@@ -24,7 +24,7 @@ class Users(db.Model):
 class UserAnswers(db.Model):
     __tablename__ = 'calendar'
     id = db.Column(db.Integer, primary_key=True)
-    userId = db.Column(db.Integer, db.ForeignKey('users.userId'))
+    userId = db.Column(db.String(40), db.ForeignKey('users.userId'))
     answeredDate = db.Column(
         db.DateTime, nullable=False, default=datetime.utcnow)
 
